@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :type
   belongs_to :industry
-
+  has_many :comments
   before_create :slugify
 
   has_rich_text :body

@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :type
   belongs_to :industry
   has_many :comments
+  has_many :votes, as: :voteable
+
   before_create :slugify
 
   has_rich_text :body

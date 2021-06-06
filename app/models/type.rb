@@ -5,4 +5,8 @@ class Type < ApplicationRecord
   def slugify
     self.slug = name.parameterize 
   end
+
+  def to_param
+    slug
+  end
 end

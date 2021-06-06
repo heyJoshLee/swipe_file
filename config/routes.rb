@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
-  resources :users, except: [:new]
+  resources :users, except: [:new], param: :slug
 
+  resources :types, param: :slug
+  resources :industries, param: :slug
+
+  resources :votes, only: [:create]
 
   resources :posts, param: :slug do
     resources :comments

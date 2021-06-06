@@ -13,6 +13,12 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @user = User.find_by(slug: params[:slug])
+    @posts = @user.posts
+    @comments = @user.comments
+  end
   
  private
   

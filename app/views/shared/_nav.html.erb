@@ -6,13 +6,39 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item ">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="types-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Types
+        </a>
+        <div class="dropdown-menu" aria-labelledby="types-dropdown">
+          <% Type.all.each do |type| %>
+            <%= link_to type.name, type, class: "dropdown-item" %>
+          <% end %>
+        </div>
       </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="industries-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Industries
+        </a>
+        <div class="dropdown-menu" aria-labelledby="industries-dropdown">
+          <% Industry.all.each do |industry| %>
+            <%= link_to industry.name, industry, class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </li>
+
+
       <% if logged_in? %>
         <li class="nav-item">
           <%= link_to "Logout", logout_path, class: "nav-link", method: :delete %>
         </li>
+      
+        <li class="nav-item ">
+          <%= link_to "Submit", new_post_path, class: "btn btn-primary" %>
+        </li>
+
       <% else %>
         <li class="nav-item">
           <%= link_to "Log in", login_path, class: "nav-link" %>

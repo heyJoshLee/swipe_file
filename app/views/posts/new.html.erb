@@ -1,0 +1,30 @@
+<h1>New Submission</h1>
+
+<%= form_with(model: @post, local: true) do |f| %>
+  <%= render "shared/errors", obj: @post %>
+  <div class="form-group">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  
+  <div class="form-group">
+    <%= f.label :body %><br/>
+    <%= f.rich_text_area :body%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :type_id%>
+    <%= f.select :type_id, @types.map { |t| [t.name, t.id]}, {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :industry_id%>
+    <%= f.select :industry_id, @industries.map { |i| [i.name, i.id]}, {}, class: "form-control" %>
+  </div>
+   
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+   
+<% end %>

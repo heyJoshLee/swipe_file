@@ -1,0 +1,14 @@
+<h1>Welcome to the app</h1>
+
+
+<% @posts.each do |post| %>
+  <div class="card mb-3">
+    <div class="card-block">
+      <%= link_to post do %>
+        <h2><%= post.title %></h2>
+      <% end %>
+    </div>
+  </div>
+
+
+<% end%>
